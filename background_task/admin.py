@@ -19,13 +19,13 @@ dec_priority.short_description = "priority -= 1"
 class TaskAdmin(admin.ModelAdmin):
     display_filter = ['task_name']
     search_fields = ['task_name', 'task_params', ]
-    list_display = ['task_name', 'task_params', 'run_at', 'priority', 'attempts', 'has_error', 'locked_by', 'locked_by_pid_running', ]
+    list_display = ['task_name', 'task_params', 'run_at', 'priority', 'attempts', 'has_error', 'locked_by', ]
     actions = [inc_priority, dec_priority]
 
 class CompletedTaskAdmin(admin.ModelAdmin):
     display_filter = ['task_name']
     search_fields = ['task_name', 'task_params', ]
-    list_display = ['task_name', 'task_params', 'run_at', 'priority', 'attempts', 'has_error', 'locked_by', 'locked_by_pid_running', ]
+    list_display = ['task_name', 'task_params', 'run_at', 'priority', 'attempts', 'has_error', 'locked_by', ]
 
 
 admin.site.register(Task, TaskAdmin)

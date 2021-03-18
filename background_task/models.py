@@ -190,21 +190,6 @@ class Task(models.Model):
 
     objects = TaskManager()
 
-    def locked_by_pid_running(self):
-        """
-        Check if the locked_by process is still running.
-        """
-        if self.locked_by:
-            try:
-                # won't kill the process. kill is a bad named system call
-                os.kill(int(self.locked_by), 0)
-                return True
-            except:
-                return False
-        else:
-            return None
-    locked_by_pid_running.boolean = True
-
     def has_error(self):
         """
         Check if the last_error field is empty.
@@ -417,21 +402,6 @@ class CompletedTask(models.Model):
     creator = GenericForeignKey('creator_content_type', 'creator_object_id')
 
     objects = CompletedTaskQuerySet.as_manager()
-
-    def locked_by_pid_running(self):
-        """
-        Check if the locked_by process is still running.
-        """
-        if self.locked_by:
-            try:
-                # won't kill the process. kill is a bad named system call
-                os.kill(int(self.locked_by), 0)
-                return True
-            except:
-                return False
-        else:
-            return None
-    locked_by_pid_running.boolean = True
 
     def has_error(self):
         """

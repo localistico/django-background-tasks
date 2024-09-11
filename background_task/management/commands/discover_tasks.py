@@ -1,16 +1,10 @@
 # -*- coding: utf-8 -*-
 import logging
-import random
-import sys
-import time
 
 from django import VERSION
 from django.core.management.base import BaseCommand
-from django.utils import autoreload
 
 from background_task.tasks import tasks, autodiscover
-from background_task.utils import SignalManager
-from compat import close_connection
 
 
 logger = logging.getLogger(__name__)
